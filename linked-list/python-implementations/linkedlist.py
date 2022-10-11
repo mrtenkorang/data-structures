@@ -60,20 +60,21 @@ class linkedEmployees(object):
         Len = -1
         while 1:
             if current is None:
-                print(Len)
-                break
+                return Len
             Len += 1
             current = current.next
 
-    def deleteByIndex(self, index):
+    '''def reverse(self):
         current = self.head
-        temp = Employee()
-        if index == 1:
-            self.head = current.next
-        for i in range(index):
-            temp = current
-            current = current.next
-        temp.next = current.next
+        follow = Employee()
+        prev = None
+
+        while current is not None:
+            follow = follow.next
+            current.next = prev
+            prev = current
+            current = follow
+        self.head = prev'''
 
 
 if __name__ == '__main__':
@@ -87,12 +88,14 @@ if __name__ == '__main__':
 
     emp.addByIndex(3, "Christopher", 28, 34000)
 
-    emp.deleteByIndex(4)
+    # emp.reverse()
+    # emp.deleteByIndex(4)
     emp.display()
-    print("\n")
-    emp.getByValue(30000)
+    # print("\n")
+    # emp.getByValue(30000)
 
-    emp.getByIndex(1)
-    emp.getLen()
+    # emp.getByIndex(1)
+
+    # emp.getLen()
     # emp.display()
     # print("Added successfully..")
