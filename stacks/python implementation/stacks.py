@@ -15,13 +15,12 @@ class People(object):
 		self.head = Person
 		return self.head
 
-	def Head(self):
+	def Top(self):
 		return self.head.name, self.head.age
 
 	def Pop(self):
 		self.head = self.head.next
 		return self.head
-
 def main():
 	people = People()
 	people.Push("Christopher", 26)
@@ -30,7 +29,7 @@ def main():
 	people.Push("Francis", 26)
 
 	head = people.Pop()
-	head = people.Head()
+	head = people.Top()
 	print(head)		
 
 if __name__ == '__main__':
