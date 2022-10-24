@@ -63,7 +63,7 @@ class linkedEmployees(object):
                 return Len
             Len += 1
             current = current.next
-
+            
     '''def reverse(self):
         current = self.head
         follow = Employee()
@@ -75,9 +75,7 @@ class linkedEmployees(object):
             prev = current
             current = follow
         self.head = prev'''
-
-
-if __name__ == '__main__':
+def main():
     emp = linkedEmployees()
 
     emp.addToEnd("Joseph", 22, 10000)
@@ -99,3 +97,8 @@ if __name__ == '__main__':
     # emp.getLen()
     # emp.display()
     # print("Added successfully..")
+
+
+if __name__ == '__main__':
+    main()
+    

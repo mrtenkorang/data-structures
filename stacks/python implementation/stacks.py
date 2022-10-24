@@ -21,8 +21,15 @@ class People(object):
 	def Pop(self):
 		self.head = self.head.next
 		return self.head
+
+	def isEmpty(self):
+		if self.head == None:
+			return True
+		return False		
 def main():
 	people = People()
+	head = people.isEmpty()
+	print(head)
 	people.Push("Christopher", 26)
 	people.Push("Tenkorang", 22)
 	people.Push("David", 22)
@@ -30,6 +37,7 @@ def main():
 
 	head = people.Pop()
 	head = people.Top()
+	head = people.isEmpty()
 	print(head)		
 
 if __name__ == '__main__':
