@@ -8,16 +8,17 @@ class Person(object):
 class queuePerson(object):
 	def __init__(self):
 		self.head = None
+		self.temp = None
 
 	def enQueue(self, name, age):
 		per = Person(name, age)
-		temp = self.head
-		if temp is None:
+		if self.head is None:
 			self.head = per
+			self.temp = per
 			return self.head
-		while temp.next is not None:
-			temp = temp.next
-		temp.next = per
+		self.temp.next = per
+		self.temp = per
+		return self.head
 	
 	def front(self):	
 		return self.head.name, self.head.age

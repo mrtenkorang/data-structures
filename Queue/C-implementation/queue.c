@@ -13,6 +13,9 @@ struct Employee{
 	struct Employee* next;
 };
 
+struct Employee* head = NULL;
+struct Employee* temp = NULL;
+
 struct Employee* createEmployee(int age, double salary){
 	struct Employee* newEmployee = (struct Employee*)malloc(sizeof(struct Employee));
 
@@ -22,19 +25,27 @@ struct Employee* createEmployee(int age, double salary){
 	return newEmployee;
 }
 
-
-struct Employee* enQueue(struct Employee* head, int age, double salary){
+// The temp variable stores the address of the recently added node to make insertion of other nodes 
+// easier ans faster 
+struct Employee* enQueue(int age, double salary){
 	struct Employee* emp = createEmployee(age,salary);
-	struct Employee* temp = head;
-
 	if (head == NULL){
 		head = emp;
+		temp = emp;
 		return head;
 	}
-	while (temp->next != NULL){
-		temp = temp->next;
-	}
 	temp->next = emp;
+	temp = emp;
+	return head;	
+}
+
+struct Employee* deQueue(struct Employee* head){
+	struct Employee* temp = head;
+	if (head == NULL){
+		return 0;
+	}
+	head = temp->next;
+	free(temp);
 	return head;
 }
 
@@ -59,10 +70,12 @@ int isEmpty(struct Employee* head){
 
 int main(){
 	struct Employee* head;
-	head = enQueue(head,22, 20000);
-	head = enQueue(head,23, 30000);
-	head = enQueue(head,24, 40000);
-	head = enQueue(head,25, 50000);
+	head = enQueue(22, 20000);
+	head = enQueue(23, 30000);
+	head = enQueue(24, 40000);
+	head = enQueue(25, 50000);
+
+	head = deQueue(head);
 
 	front(head);
 	printf("%d\n",isEmpty(head));

@@ -9,6 +9,7 @@ class Employee(object):
 class linkedEmployees(object):
     def __init__(self):
         self.head = Employee()
+        self.temp = None
 
     def addToEnd(self, name, age, salary):
         newEmployee = Employee(name, age, salary)
