@@ -1,14 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 struct nodeTree{
 	int data;
 	struct nodeTree* left;
 	struct nodeTree* right;
 };
-
-
 struct nodeTree* create(int data){
 	struct nodeTree* newNode = (struct nodeTree*)malloc(sizeof(struct nodeTree*));
 	newNode->data = data;
@@ -16,7 +13,6 @@ struct nodeTree* create(int data){
 	newNode->right = NULL;
 	return newNode;
 }
-
 struct nodeTree* insert(struct nodeTree* root, int data){
 	if (root == NULL){
 		root = create(data);
@@ -27,7 +23,6 @@ struct nodeTree* insert(struct nodeTree* root, int data){
 	}
 	return root;
 }
-
 bool search(struct nodeTree* root, int data){
 	if (root == NULL){
 		return false;
@@ -39,7 +34,6 @@ bool search(struct nodeTree* root, int data){
 		return search(root->right,data);
 	}
 }
-
 // find the minimum  umber using recursion
 int findMin(struct nodeTree* root){
 	if (root == NULL){
@@ -50,7 +44,6 @@ int findMin(struct nodeTree* root){
 	}
 	return findMin(root->left);
 }
-
 //find the maximum number using recursion
 int findMax(struct nodeTree* root){
 	if (root == NULL){
@@ -89,5 +82,4 @@ int main(){
 	}else{
 		printf("Number not found!\n");
 	}
-
 }
