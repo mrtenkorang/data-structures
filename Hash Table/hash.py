@@ -62,11 +62,15 @@ class hashTable:
 		self.checkGrowth()
 
 
+<<<<<<< HEAD
 
 		def growth(self):
 			newHashTable = hashTable()
 			newHashTable.size = 2 * self.size
 			newHashTable.slots = [None for i in range(newHashTable.size)]
+=======
+		// Incomplete file
+>>>>>>> 4c4d99f475152629ec4b4c2a4a97c182eebdd3fa
 
 			for a in range(self.size):
 				if self.slots[a] != None:
