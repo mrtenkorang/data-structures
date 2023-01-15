@@ -1,11 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// creates a skeleto for the data
 struct nodeTree{
 	int data;
 	struct nodeTree* left;
 	struct nodeTree* right;
 };
+
+// Assigns the data to a memory location
 struct nodeTree* create(int data){
 	struct nodeTree* newNode = (struct nodeTree*)malloc(sizeof(struct nodeTree*));
 	newNode->data = data;
@@ -13,6 +16,8 @@ struct nodeTree* create(int data){
 	newNode->right = NULL;
 	return newNode;
 }
+
+// Adds the data to the tree
 struct nodeTree* insert(struct nodeTree* root, int data){
 	if (root == NULL){
 		root = create(data);
@@ -23,6 +28,8 @@ struct nodeTree* insert(struct nodeTree* root, int data){
 	}
 	return root;
 }
+
+// searches for the data
 bool search(struct nodeTree* root, int data){
 	if (root == NULL){
 		return false;
@@ -34,7 +41,7 @@ bool search(struct nodeTree* root, int data){
 		return search(root->right,data);
 	}
 }
-// find the minimum  umber using recursion
+// find the minimum  number using recursion
 int findMin(struct nodeTree* root){
 	if (root == NULL){
 		printf("Empty tree, find operation failed...");

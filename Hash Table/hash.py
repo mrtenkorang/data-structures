@@ -8,10 +8,11 @@ class hashitem:
 		self.value = value
 
 class hashTable:
-	def __init__(self, size, slots, count):
+	def __init__(self):
 		self.size = 256 # size of the slot list
 		self.slots = [None for i in range(self.size)]# the slots list
 		self.count = 0 # A variable to keep track of all taken slots
+		self.MAXLOADFACTOR = 0.65
 
 
 	# A method to hash the key of the data item to get an index for it in the hash table
@@ -50,15 +51,45 @@ class hashTable:
 				break
 			"""Else if the slot is taken but the key is not the same, then it means a new place must be
 			found for that particular data, so add 1 to the hashedValue and store it in the same variable
-			and find its remainder with the size of the slots list"""
+			and find its remainder with the size of the slots list HERE THE LINEAR PROBING TECHNIQUE
+			 is used"""
 			hashedValue = (hashedValue + 1) % self.size
 
 		"""Now check if the new slot is empty, by new slot I mean the new hashedValue generated above"""
 		if self.slots[hashedValue] == None:
 			self.count += 1 # if it is empty, increase the count variable
 		self.slots[hashedValue] = item	# then put the item at that free slot
+		self.checkGrowth()
 
 
 
+		def growth(self):
+			newHashTable = hashTable()
+			newHashTable.size = 2 * self.size
+			newHashTable.slots = [None for i in range(newHashTable.size)]
 
+			for a in range(self.size):
+				if self.slots[a] != None:
+					newHashTable.put(self.slots[a].key, self.slots[a].value)
 
+			self.size = newHashTable.size
+			self.slots = newHashTable.slots
+
+		def checkGrowth(self):
+			loadfactor = self.count/self.size
+			if loadfactor > self.MAXLOADFACTOR
+				print("Load factor before table growth", loadfactor)
+				self.growth()
+				print("Load factor after table growth", self.count /self.size)
+			else:
+				print("There are enough spaces in the table")					
+
+ht = hashTable() 
+ht.put("good", "eggs") 
+ht.put("better", "ham") 
+ht.put("best", "spam") 
+ht.put("ad", "do not") 
+ht.put("ga", "collide") 
+ht.put("awd", "do not") 
+ht.put("add", "do not") 
+ht.checkGrowth()
